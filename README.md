@@ -1,92 +1,113 @@
-# Premium E-Commerce MERN Stack App
+# PremiumStore E-Commerce Platform
 
-A complete, beautifully designed responsive mini E-commerce platform built with the MERN stack (MongoDB, Express, React, Node.js) and Tailwind CSS. 
+A professional, full-stack E-Commerce web application built using the MERN stack (MongoDB, Express.js, React, Node.js). Developed by **Sneha D M** as the final submission for **Task 04**, this project features a fully responsive UI, secure JWT authentication, dynamic product catalog sorting, advanced shopping cart management, and a robust administrator dashboard.
 
-## Features
-- **User Authentication**: Secure JWT-based login/registration.
-- **Product Discovery**: Browse stunning product layouts with filtering and searching out of the box.
-- **Cart Management**: Add, update quantities, remove items, and preview subtotals.
-- **Checkout Simulation**: End-to-end checkout flow storing history in MongoDB without real payment processing logic.
-- **Responsive Aesthetics**: Premium UI scaling beautifully from mobile 320px endpoints to 4K desktops using Tailwind CSS. 
-- **Stock Validation**: Add-to-cart operations are checked heavily against backend stock metrics to prevent over-ordering.
+## 🚀 Key Features
 
-## Technology Stack
-- **Frontend**: Vite, React (Context API), React Router DOM, Tailwind CSS, Lucide React (Icons), Axios.
-- **Backend**: Node.js, Express.js, MongoDB (Mongoose), JWT, BcryptJS, express-validator.
+### For Customers
+* **Comprehensive Product Catalog**: Browse 20+ diverse products across Footwear, Clothing, Accessories, Home & Lifestyle, and Electronics.
+* **Advanced Search & Filtering**: Dynamically slice products by Category, exact Keyword, Price Brackets, and custom Sorting (Newest, Top Rated, Price Low/High).
+* **Deep Product Details**: View detailed descriptions, stock status, large format imagery, original price markdown percentage drops, and integrated customer reviews.
+* **Intelligent Cart & Wishlist**: Real-time contextual quantity management tightly coupled with MongoDB persistence logic. 
+* **Secure Checkout System**: Multi-step checkout tunnel collecting shipping payloads securely, supporting **Cash on Delivery** and mock encrypted Card portals. Success splashed natively with generated Order IDs.
+* **User Accounts**: Highly secure bcrypt password hashing and persistent JWT sessions mapping to detailed order historical ledgers.
 
-## Folder Structure
-```text
-ecommerce-project/
-├── backend/
-│   ├── src/
-│   │   ├── config/ (db connection)
-│   │   ├── controllers/ (logic functions)
-│   │   ├── middleware/ (auth & error handlers)
-│   │   ├── models/ (Mongoose schemas)
-│   │   ├── routes/ (Express routes)
-│   │   └── seed/ (Mock data seeder)
-│   ├── .env
-│   ├── server.js
-│   └── package.json
-└── frontend/
-    ├── src/
-    │   ├── components/
-    │   ├── context/
-    │   ├── pages/
-    │   ├── services/
-    │   ├── App.jsx
-    │   └── main.jsx
-    ├── index.html
-    ├── tailwind.config.js
-    └── package.json
+### For Administrators
+* **Unified Dashboard Gateway**: Role-gated portal (protected by JWT middleware) yielding total situational awareness.
+* **Financial Analytics**: Real-time computational statistics (Total Global Sales, Total Orders, Total Customers).
+* **Inventory Control**: Directly manage product levels, categories, original crossover prices, and visibility.
+* **Fulfillment Management**: Monitor and execute order status overrides (Pending, Processing, Completed, Return Requested) seamlessly across the backend.
+* **User Management**: Regulate platform access and forcibly execute account deletions.
+
+## 💻 Tech Stack
+
+* **Frontend**: React, Vite, Tailwind CSS v4, React Router DOM, Axios, Lucide React (Icons)
+* **Backend**: Node.js, Express.js
+* **Database**: MongoDB & Mongoose ODM
+* **Security**: JWT Authentication, Bcrypt Password Encryption, strict CORS and Header protections.
+
+## ⚙️ Installation & Setup
+
+### Prerequisites
+* [Node.js](https://nodejs.org/) installed
+* Valid [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) or local MongoDB instance string
+
+### 1. Repository Setup
+
+```bash
+git clone https://github.com/your-username/ecommerce-project.git
+cd ecommerce-project
 ```
 
-## Prerequisites
-- Node.js (v16+ recommended)
-- MongoDB instance (Local or Atlas) - ensuring it runs on `mongodb://127.0.0.1:27017`
+### 2. Backend Initialization
 
-## Installation and Execution
-
-### 1. Database Setup
-Ensure MongoDB is running securely.
-
-### 2. Backend Setup
 ```bash
 cd backend
 npm install
-# Seed the database
-npm run seed
-# Start the backend server
-npm run dev
 ```
 
-### 3. Frontend Setup
-Open a new terminal.
+Configure your environment variables:
+Create a `.env` file inside the `backend` directory (there is a template provided in `backend/.env.example`) and supply your secrets:
+```env
+NODE_ENV=development
+PORT=5000
+MONGODB_URI=mongodb+srv://<your_username>:<your_password>@cluster0...
+JWT_SECRET=your_super_secret_jwt_string_here
+```
+
+### 3. Frontend Initialization
+
+Open a totally separate secondary terminal tab/window:
 ```bash
 cd frontend
 npm install
-# Start the Vite React app
+```
+
+Ensure Vite knows how to map API requests by copying the example environment payload:
+Create a `.env` file in the `frontend` folder from `.env.example`:
+```env
+VITE_API_URL=http://localhost:5000/api
+```
+
+## 🗄️ Database Seeding (Crucial First Step)
+
+Out of the box, the database requires items to function seamlessly. A highly powerful script has been provided to instantly wipe your active database and automatically inject 21 premium products across all parameters along with Admin configurations.
+
+While inside the `backend` directory, run:
+```bash
+node src/seed/seeder.js
+```
+*(You should see a success message acknowledging total data population).*
+
+## 🏃 Running the Application locally
+
+**Start the Backend API Server:**
+*(Ensure you are in the `backend` folder)*
+```bash
 npm run dev
 ```
 
-### Test Credentials
-The database seeding scripts provide a test user automatically.
-**Customer Login:**
+**Start the Frontend React Interface:**
+*(Ensure you are in the `frontend` folder)*
+```bash
+npm run dev
+```
+
+The application will natively compile and open a browser window operating aggressively at `http://localhost:5173`.
+
+## 🔐 Default Access Credentials
+
+Using the `seeder.js` script successfully activates the following accounts automatically:
+
+**Administrator Gateway Access:**
+- Email: `admin@example.com`
+- Password: `password123`
+
+**Standard Demo Customer Access:**
 - Email: `customer@example.com`
 - Password: `password123`
 
-## API Endpoints
-Base URL: `/api`
-- `POST /auth/register` : Register a user
-- `POST /auth/login` : Login user
-- `GET /products` : Get all products
-- `GET /cart` : Protected. Get current user cart
-- `POST /orders` : Protected. Create dummy checkout order
-
-## Known Limitations
-- The checkout step explicitly skips the standard Stripe integration, storing "Demo Card" instead.
-- The Admin dashboard is omitted by default to optimize the customer flows.
-
-## Future Improvements
-- Integrate actual stripe payment gates.
-- Create an Admin module specifically for tracking stock thresholds.
+## 🛡️ Best Practices Noted
+- `.gitignore` rigorously protects `node_modules/` and `.env` payloads from upstream leakage.
+- JWT Interceptors cleanly dump stale sessions if standard backend token mismatches unexpectedly drop. Highly resilient client state preservation.
+- Full responsive breakpoints mapping elegantly from 320px micro-mobiles up to 4K Ultrawides.
