@@ -1,0 +1,9 @@
+<svg width="600" height="600" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100%" height="100%" fill="#f8fafc"/>
+  
+  <rect x="250" y="220" width="100" height="100" rx="20" fill="#e2e8f0"/>
+  <circle cx="300" cy="270" r="20" fill="#cbd5e1"/>
+  
+  <text x="50%" y="360" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="600" letter-spacing="1" fill="#475569" text-anchor="middle">PREMIUM PRODUCT</text>
+  <text x="50%" y="390" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="500" fill="#94a3b8" text-anchor="middle">IMAGE PREVIEW UNAVAILABLE</text>
+</svg>
