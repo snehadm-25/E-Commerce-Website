@@ -2,8 +2,11 @@
     "name": "ecommerce-project",
     "version": "1.0.0",
     "private": true,
+    "workspaces": [
+        "frontend",
+        "backend"
+    ],
     "scripts": {
-        "build": "npm run build --prefix frontend",
-        "install-all": "npm install --prefix frontend && npm install --prefix backend"
+        "build": "npm run build --prefix frontend"
     }
 }
